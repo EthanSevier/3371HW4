@@ -1,0 +1,332 @@
+  <!doctype html>
+<!--
+Program name: patient-form.html
+Author: Ethan Sevier
+Date created: 2/23/2026
+Date last edited: 4/19/2026
+Version: 3.4
+Description: A mock patient registration form for Express Kidneys4Cash -->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Blank template</title>
+
+        <link rel="stylesheet" href="styles-2.css">
+
+        <script src="https://kit.fontawesome.com/577edfd922.js" crossorigin="anonymous"></script>
+
+            <script>
+                window.onload = function () {
+                    displayWelcomeBack();
+                };
+            </script>
+
+    </head>
+
+    <body>
+        
+        <div class="header">
+                <p id="date"></p>
+
+                <h2>
+                <img src="./download_1_.png" alt="W3Schools.com" width="80" height="60">
+                Express Kidneys4Cash
+                </h2>
+
+        </div>
+
+        <h3>
+
+            Registration Form
+
+        </h3>
+            <form>
+                <div id = "welcomeBack"></div>
+
+                <table class="patient-form">
+
+                 
+                    <tr>
+                        <td>
+                            <label for="fname">First name:</label><br>
+                            <input type="text" id="fname" name="fname" maxlength="30" placeholder="John (req)" required minlength="1" onchange="validateName('fname')">
+                            <span class="error" id="fnameError"></span>
+                        </td>
+
+                        <td>
+                            <label for="lname">Last name:</label><br>
+                            <input type="text" id="lname" name="lname" maxlength="30" placeholder="Doe (req)" required minlength="1" onchange="validateName('lname')">
+                            <span class="error" id="lnameError"></span>
+                        </td>
+
+                        <td>
+                            <label for="mint">MI:</label><br>
+                            <input type="text" id="mint" name="mint" size="1" maxlength="1" placeholder="X (req)"  pattern="[A-Za-z]" onchange="validateMint()">
+                            <span class="error" id="mintError"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="dob">Date Of Birth:</label><br>
+                            <input type="date" id="dob" name="dob" required min="1920-01-01" max="2026-04-16" onchange="dateInputted()" onclick="validateDob()">
+                            <span class="error" id="dobError"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="ssn">Social Security Number:</label><br>
+                         <input type="password" id="ssn" name="ssn" maxlength="11" minlength="11" placeholder="111-11-1111 (req)" required onchange="validateSSN()">
+                         <span class="error" id="ssnError"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="addLine1">Address Line 1:</label><br>
+                            <input type="text" id="addLine1" name="addLine1" maxlength="30" placeholder="1600 Pensylvania Ave (req)" required onchange="validateAdd1()">
+                            <span class="error" id="addLine1Error"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="addLine2">Address Line 2:</label><br>
+                            <input type="text" id="addLine2" name="addLine2" maxlength="30" placeholder="1601 Pennsylvania Ave" >
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="City">City:</label><br>
+                            <input type="text" id="City" name="City" maxlength="30" required placeholder="Houston (req)" onchange="validateCity()">
+                            <span class="error" id="cityError"></span>
+                        </td>
+
+                        <td>
+                            <label for="Zip">Zip Code:</label><br>
+                            <input type="text" id="Zip" name="Zip" maxlength="5" minlength="4" size="5" placeholder="77022 (req)" onchange = "validateZip()">
+                            <span class="error" id="zipError"></span>
+                        </td>
+
+                        <td>
+                            <label for="State">State:</label><br>
+                            <span id="stateList"></span> 
+                            <span class="error" id="stateError"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="Email" name="Email" maxlength="30"  required placeholder="johndoe@gmail.com (req)" onchange="validateEmail()">
+                            <span class="error" id="EmailError"></span>
+                        </td>
+
+                        <td>
+                            <label for="Phone">Phone:</label><br>
+                            <input type="tel" id="Phone" name="Phone" maxlength="13" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="111-111-1111 (req)" onchange="validatePhone()">
+                            <span class="error" id="phoneError"></span>
+                            Opt In for Texts?
+                            <input type="radio" id = "optYes" name="textOptin" value="Yes" required>
+                            <label for="Yes1">Yes</label>
+                            <input type="radio" id = "optNo" name="textOptin" value="No">
+                            <label for="No1">No</label>
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="meds">List any medications you are currently taking:</label><br>
+                            <textarea rows="4" cols="50" required placeholder="Gapapentin, Lisinopril, etc... or None (req)" id = "meds"></textarea>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="medHistory">Describe your medical history:</label><br>
+                            <textarea rows="4" cols="50" placeholder="Any past surgeries, family history, etc... (req)" id="medHistory"></textarea>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <div class="slidecontainer">
+                            <label for="painLevel">Select your current pain level:</label>
+                            <input type="range" min="1" max="10" value="5" class="slider" id="painLevel" >
+                            </div>
+                        </td>
+                        <td id="painNumber">5</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td> Select any symptoms you are experiencing:<br>
+                            <input type="checkbox"  name="Cough" value="Cough">
+                            <label for="Cough"> Cough&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                            <input type="checkbox"  name="Sore Throat" value="Sore Throat">
+                            <label for="Sore Throat"> Sore Throat</label>
+
+                            <input type="checkbox"  name="Vomiting / Nausea" value="Vomiting / Nausea">
+                            <label for="Vomiting / Nausea"> Vomiting / Nausea</label><br>
+
+                            <input type="checkbox"  name="Fever" value="Fever">
+                            <label for="Fever"> Fever&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                            <input type="checkbox"  name="Headache" value="Headache">
+                            <label for="Headache"> Headache</label>
+
+                            <input type="checkbox"  name="Fatigue" value="Fatigue">
+                            <label for="Fatigue"> Fatigue</label><br>
+
+                            <input type="checkbox"  name="Body aches" value="Body aches">
+                            <label for="Body aches"> Body aches</label>
+
+                            <input type="checkbox"  name="Diarrhea" value="Diarrhea">
+                            <label for="Diarrhea"> Diarrhea</label>
+
+                            <input type="checkbox"  name="Dizziness" value="Dizziness">
+                            <label for="Dizziness"> Dizziness</label>
+                        </td>
+
+
+                    </tr>
+                    
+                    <tr>
+
+                        <td> How are you paying?
+                            <input type="radio"  id = "payOut" name="Insurance" value="outofpocket" required>
+                            <label for="outofpocket">Out of pocket</label>
+                            <input type="radio"  name="Insurance" id="payIns" value="Insurance">
+                            <label for="Insurance">Insurance</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> What is your sex as assigned at birth?
+                            <input type="radio"  name="Sex" value="Male" id="sexMale" required>
+                            <label for="Sex">Male</label>
+                            <input type="radio"  name="Sex" id="sexFemale" value="Female">
+                            <label for="Sex">Female</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="UserID">Creat a UserID:</label><br>
+                            <input type="text" id="UserID" name="UserID" maxlength="20" required placeholder="For future Log-ins (req)" onchange="validateUserID()">
+                            <span class="error" id="UserIDError"></span>
+                        </td>
+                        <td> 
+                            <br>
+                            Remember Me? <input type="checkbox" id="rememberMe" checked onchange="rememberMe()"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="password">Creat a password:</label><br>
+                            <input type="password" id="password" name="password" maxlength="30" required onclick="validatePassword()" onchange="validatePassword()">
+                            <span class="error" id="passwordError"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <label for="repassword">Confirm password:</label><br>
+                            <input type="password" id="repassword" name="repassword" maxlength="30" required onclick="validateRepassword()" onchange="validateRepassword()">
+                            <span class="error" id="repasswordError"></span>
+                        </td>
+
+                    </tr>
+
+                </table>
+
+                <br>
+                <div id="mapLabel">We are located at:</div>
+                <iframe class="map" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3465.2069915945103!2d-95.39704372381414!3d29.71376283416154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c079d176858f%3A0x1bbe1c69b7d95949!2sMemorial%20Hermann%20Texas%20Medical%20Center%20Emergency%20Room!5e0!3m2!1sen!2sus!4v1778219125092!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <br><br>
+
+                <div class="endButtons">
+
+                    <input type="reset" value="Reset" />
+                    <button type="button" onclick="openModal()">Review</button>
+                    
+
+                </div>
+                <br><br><br><br><br>
+
+            
+            <div id="reviewModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h5>Review Your Information</h5>
+                    <table class="reviewTable">
+                        <tr><td><h6>Personal Information:</h6></td></tr>
+                        <tr><td id= "fnameR"></td><td id= "lnameR"> </td><td id= "mintR"> </td></tr>
+                        <tr><td id= "dobR"></td><td id= "ssnR"> </td></tr>
+                        <tr><td><h6>Contact Information:</h6></td></tr>
+                        <tr><td id= "EmailR"></td><td id= "PhoneR"> </td><td id= "OptinR"> </td></tr>
+                        <tr><td><h6>Address:</h6></td></tr>
+                        <tr><td id= "addLine1R"></td><td id= "addLine2R"> </td></tr>
+                        <tr><td id= "CityR"></td><td id= "ZipR"> </td><td id= "StateR"> </td></tr>
+                        <tr><td><h6>Clinical Information:</h6></td></tr>
+                        <tr><td id = "painLevelR"></td><td id = "sexR"></td><td id = "paymentR"></td></tr>
+                        <tr><td id = "symptomsR"></td></tr>
+                        <tr><td id = "userIDR"></td><td id = "passwordR"></td></tr>
+                        <tr><td></td></tr>
+                    </table>
+
+                    
+
+                    <br>
+                    <span id="submitBtnContainer" ><input type="submit" value="Submit" id=submitBtn  onclick="window.location.href='./thankyou-2.html';"/></span> <button type="button" onclick="closeModal()">Close</button>
+                </div>
+            </div> 
+        </form>
+            
+        <div class="footer">
+            <span class="socialMedia">
+                Contact Us:</br> 
+                <a href="https://www.instagram.com/joelosteen/"><i class="fab fa-instagram"></i></a></br>
+                <a href="https://www.x.com/"><i class="fab fa-twitter-square"></i></a></br> 
+            </span>
+            Express Kidneys4Cash</br> 
+            3700 Southwest Fwy, Houston, TX 77027</br>
+            +18002780520
+                
+        </div>
+
+        <script src = "scripts-2.js"></script>
+
+    </body>
+
+
+</html>
