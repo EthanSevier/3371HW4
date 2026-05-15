@@ -206,18 +206,7 @@ h6{
     align-items: center;
     gap: 8px;
 
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-radius: 8px;
-
     transition: 0.2s;
     cursor: pointer;
 }
 
-.checkbox-item:hover {
-    background-color: #e2e2e2;
-}
-
-.checkbox-item input[type="checkbox"] {
-    transform: scale(1.2);
-}
